@@ -11,6 +11,6 @@ public class ListRow extends RecyclerView.ViewHolder{
     public ImageView mThumbnail;
     public ListRow(View view){
         super(view);
-        mThumbnail=(ImageView)view.findViewById(R.id.thumbnail);
+   //     mThumbnail=(ImageView)view.findViewById(R.id.thumbnail);
     }
 }
