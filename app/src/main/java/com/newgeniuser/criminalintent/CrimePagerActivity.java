@@ -9,10 +9,11 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import java.util.List;
 import java.util.UUID;
 
-public class CrimePagerActivity extends FragmentActivity implements CrimeFragment.OnFragmentInteractionListener {
+public class CrimePagerActivity extends AppCompatActivity implements CrimeFragment.OnFragmentInteractionListener {
     private static final String EXTRA_CRIME_ID="com.newgeniuser.criminalintent.crime_id";
 
     private ViewPager mViewPager;
