@@ -40,9 +40,18 @@ public class CrimeLab {
         }*/
     }
     public List<Crime> getCrimes(){
-
-//        return mCrimes;
-        return new ArrayList<>();
+        List<Crime> crimes=new ArrayList<>();
+        CrimeCursorWrapper cursor=queryCrimes(null,null);
+        try{
+            cursor.moveToFirst();
+                while(!cursor.isAfterLast()){
+                    crimes.add(cursor.getCrime());                cursor.moveToNext();
+                }
+        }finally{
+            cursor.close();
+        }
+//        return mCrimes;Crime
+        return crimes;
     }
 
     public Crime getCrime(UUID id){
@@ -51,7 +60,14 @@ public class CrimeLab {
                 return crime;
             }
         }*/
-        return null;
+        CrimeCursorWrapper cursor=queryCrimes(CrimeDbSchema.CrimeTable.Cols.UUID+"=?",new String[]{id.toString()});
+        try{if(cursor.getCount()==0){
+            return null;
+            }
+            cursor.moveToFirst();
+            return cursor.getCrime();
+        }finally{cursor.close();}
+
     }
     private static ContentValues getContentValues(Crime crime){
         ContentValues values=new ContentValues();
