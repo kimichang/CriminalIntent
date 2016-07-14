@@ -6,6 +6,7 @@
     tools:context="com.newgeniuser.criminalintent.CrimeFragment"
     android:id="@+id/fragment_crime">
 
+    <include layout="@layout/view_camera_and_title"/>
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="wrap_content"

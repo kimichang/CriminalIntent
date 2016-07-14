@@ -20,7 +20,10 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
+import java.io.File;
 import java.util.Date;
 import java.util.UUID;
 
@@ -48,6 +51,10 @@ public class CrimeFragment extends Fragment {
     private CheckBox mSolvedCheckBox;
     private Button mReportButton;
     private Button mSuspectButton;
+    private ImageView mPhotoView;
+    private ImageButton mPhotoButton;
+    private File mPhotoFile;
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -96,6 +103,7 @@ public class CrimeFragment extends Fragment {
 //        UUID crimeId=(UUID)getActivity().getIntent().getSerializableExtra(CrimeActivity.EXTRA_CRIME_ID);
         UUID crimeId=(UUID)getArguments().getSerializable(ARG_CRIME_ID);
         mCrime=CrimeLab.get(getActivity()).getCrime(crimeId);
+        mPhotoFile=CrimeLab.get(getActivity()).getPhotoFile(mCrime);
     }
 
     @Override
@@ -164,6 +172,9 @@ public class CrimeFragment extends Fragment {
         if(mCrime.getSuspect()!=null){
             mSuspectButton.setText(mCrime.getSuspect());
         }
+
+        mPhotoButton=(ImageButton) v.findViewById(R.id.crime_camera);
+        mPhotoView=(ImageView) v.findViewById(R.id.crime_photo);
         return v;
     }
 
